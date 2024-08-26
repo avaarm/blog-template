@@ -15,3 +15,33 @@ header {
   border: 1px solid #ddd;
   border-radius: 5px;
 }
+
+.blog-post h2 {
+  margin-top: 0;
+}
+
+.blog-post h2 a {
+  color: #333;
+  text-decoration: none;
+}
+
+.blog-post h2 a:hover {
+  text-decoration: underline;
+}
+
+.post-date {
+  color: #666;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.read-more {
+  display: inline-block;
+  margin-top: 10px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.read-more:hover {
+  text-decoration: underline;
+}
