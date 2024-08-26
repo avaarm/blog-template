@@ -1,24 +1,40 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+        <h1>My Blog</h1>
       </header>
+      <main>
+        <BlogList />
+      </main>
     </div>
+  );
+}
+
+function BlogList() {
+  const posts = [
+    { id: 1, title: 'First Blog Post', content: 'This is my first blog post.' },
+    { id: 2, title: 'Second Blog Post', content: 'This is my second blog post.' },
+  ];
+
+  return (
+    <div className="blog-list">
+      {posts.map(post => (
+        <BlogPost key={post.id} title={post.title} content={post.content} />
+      ))}
+    </div>
+  );
+}
+
+function BlogPost({ title, content }) {
+  return (
+    <article className="blog-post">
+      <h2>{title}</h2>
+      <p>{content}</p>
+    </article>
   );
 }
 
