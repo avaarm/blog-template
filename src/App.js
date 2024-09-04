@@ -20,9 +20,8 @@ function BlogList() {
   const posts = [
     { 
       id: 1, 
-      title: 'First Blog Post', 
+      title: 'The Digital Magic of Tidying Up: A Guide to Declutter Your Digital Life', 
       content: `
-The Digital Magic of Tidying Up: A Guide to Declutter Your Digital Life
 
 In our increasingly digital world, it’s easy for our digital lives to become cluttered with endless emails, files, photos, and apps. Just like a messy room, a chaotic digital space can lead to stress, reduce productivity, and make it difficult to find what you need when you need it. The good news is that tidying up your digital life can be as satisfying as organizing your physical space. Here’s a guide to help you reduce the digital burden and create a more streamlined, efficient, and enjoyable online experience.
 
@@ -100,9 +99,9 @@ function BlogPost({ title, content, date, link }) {
       <p className="post-date">{formatDate(date)}</p>
       <div className="post-content">
         {content.split('\n').map((paragraph, index) => {
-          if (paragraph.startsWith('1.') || paragraph.startsWith('2.') || paragraph.startsWith('3.')) {
+          if (paragraph.trim().match(/^\d+\.\s/)) {
             const listItems = paragraph.split('\n').map((item, itemIndex) => (
-              <li key={`${index}-${itemIndex}`}>{item}</li>
+              <li key={`${index}-${itemIndex}`}>{item.replace(/^\d+\.\s/, '')}</li>
             ));
             return (
               <ol key={index}>
