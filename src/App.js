@@ -101,10 +101,12 @@ function BlogPost({ title, content, date, link }) {
         {content.split('\n').map((paragraph, index) => {
           if (paragraph.trim().match(/^\d+\.\s/)) {
             const listItems = paragraph.split('\n').map((item, itemIndex) => (
-              <li key={`${index}-${itemIndex}`}>{item.replace(/^\d+\.\s/, '')}</li>
+              <li key={`${index}-${itemIndex}`}>
+                {String.fromCharCode(itemIndex + 97 + 1) + '. '}{item.replace(/^\d+\.\s/, '')}
+              </li>
             ));
             return (
-              <ol key={index}>
+              <ol key={index} type="a">
                 {listItems}
               </ol>
             );
@@ -126,7 +128,6 @@ function BlogPost({ title, content, date, link }) {
     </article>
   );
 }
-
 function formatDate(date) {
   return date.toLocaleString('en-US', {
     year: 'numeric',
