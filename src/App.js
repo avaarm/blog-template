@@ -112,7 +112,9 @@ function BlogPost({ title, content, date, link }) {
             );
           } else if (paragraph.startsWith('-')) {
             const listItems = paragraph.split('\n').map((item, itemIndex) => (
-              <li key={`${index}-${itemIndex}`}>{item.replace('-', '')}</li>
+              <li key={`${index}-${itemIndex}`}>
+                <span className="bullet">•</span> {item.replace('-', '')}
+              </li>
             ));
             return (
               <ul key={index}>
@@ -128,6 +130,7 @@ function BlogPost({ title, content, date, link }) {
     </article>
   );
 }
+
 function formatDate(date) {
   return date.toLocaleString('en-US', {
     year: 'numeric',
