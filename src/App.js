@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>My Blog</h1>
+        <h1>Dev Bun</h1>
       </header>
       <main>
         <BlogList />
@@ -19,14 +19,14 @@ function BlogList() {
     { 
       id: 1, 
       title: 'First Blog Post', 
-      content: [
-        'In our increasingly digital world, it’s easy for our digital lives to become cluttered with endless emails, files, photos, and apps. Just like a messy room, a chaotic digital space can lead to stress, reduce productivity, and make it difficult to find what you need when you need it. The good news is that tidying up your digital life can be as satisfying as organizing your physical space. Here’s a guide to help you reduce the digital burden and create a more streamlined, efficient, and enjoyable online experience.',
-        '1. Declutter Your Email Inbox:',
-        'Your email inbox is often the primary source of digital clutter. Here’s how to clean it up:',
-        'Unsubscribe from Unnecessary Newsletters: Take a few minutes each day to unsubscribe from newsletters and promotional emails that no longer interest you. Use tools like Unroll.Me to manage subscriptions easily.',
-        'Set Up Folders and Filters: Organize your inbox by creating folders for different categories like work, personal, finances, etc. Use filters to automatically sort incoming emails into these folders.',
-        'Delete and Archive: Go through old emails and delete those that are no longer needed. For emails that you might need to reference later, create an archive folder. Many email platforms offer a one-click archive option to simplify this process.'
-      ],
+      content: `In our increasingly digital world, it's easy for our digital lives to become cluttered with endless emails, files, photos, and apps. Just like a messy room, a chaotic digital space can lead to stress, reduce productivity, and make it difficult to find what you need when you need it. The good news is that tidying up your digital life can be as satisfying as organizing your physical space. Here's a guide to help you reduce the digital burden and create a more streamlined, efficient, and enjoyable online experience.
+
+1. Declutter Your Email Inbox:
+Your email inbox is often the primary source of digital clutter. Here's how to clean it up:
+
+Unsubscribe from Unnecessary Newsletters: Take a few minutes each day to unsubscribe from newsletters and promotional emails that no longer interest you. Use tools like Unroll.Me to manage subscriptions easily.
+Set Up Folders and Filters: Organize your inbox by creating folders for different categories like work, personal, finances, etc. Use filters to automatically sort incoming emails into these folders.
+Delete and Archive: Go through old emails and delete those that are no longer needed. For emails that you might need to reference later, create an archive folder. Many email platforms offer a one-click archive option to simplify this process.`,
       date: new Date('2024-08-26T10:00:00'),
       link: '/post/1'
     }
