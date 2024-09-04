@@ -1,10 +1,12 @@
 import React from 'react';
 import './App.css';
+import Logo from './Logo'
 
 function App() {
   return (
     <div className="App">
       <header>
+        <Logo/>
         <h1>Dev Bun</h1>
       </header>
       <main>
