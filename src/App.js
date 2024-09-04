@@ -54,17 +54,31 @@ function BlogPost({ title, content, date, link }) {
     <article className="blog-post">
       <h2><a href={link}>{title}</a></h2>
       <p className="post-date">{formatDate(date)}</p>
-      {Array.isArray(content) ? (
-        <div className="post-content">
-          <ul>
-            {content.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ul>
-        </div>
-      ) : (
-        <p className="post-content">{content}</p>
-      )}
+      <div className="post-content">
+        {content.split('\n').map((paragraph, index) => {
+          if (paragraph.startsWith('1.') || paragraph.startsWith('2.') || paragraph.startsWith('3.')) {
+            const listItems = paragraph.split('\n').map((item, itemIndex) => (
+              <li key={`${index}-${itemIndex}`}>{item}</li>
+            ));
+            return (
+              <ol key={index}>
+                {listItems}
+              </ol>
+            );
+          } else if (paragraph.startsWith('-')) {
+            const listItems = paragraph.split('\n').map((item, itemIndex) => (
+              <li key={`${index}-${itemIndex}`}>{item.replace('-', '')}</li>
+            ));
+            return (
+              <ul key={index}>
+                {listItems}
+              </ul>
+            );
+          } else {
+            return <p key={index}>{paragraph}</p>;
+          }
+        })}
+      </div>
       <a href={link} className="read-more">Read more</a>
     </article>
   );
