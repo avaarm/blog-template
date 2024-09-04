@@ -98,9 +98,10 @@ function BlogPost({ title, content, date, link }) {
       <h2><a href={link}>{title}</a></h2>
       <p className="post-date">{formatDate(date)}</p>
       <div className="post-content">
-        {content.split('\n').map((paragraph, index) => {
-          if (paragraph.trim().match(/^\d+\.\s/)) {
-            const listItems = paragraph.split('\n').map((item, itemIndex) => (
+        {content.split('\n\n').map((paragraph, index) => {
+          const lines = paragraph.split('\n');
+          if (lines[0].trim().match(/^\d+\.\s/)) {
+            const listItems = lines.map((item, itemIndex) => (
               <li key={`${index}-${itemIndex}`}>
                 {String.fromCharCode(itemIndex + 97 + 1) + '. '}{item.replace(/^\d+\.\s/, '')}
               </li>
@@ -110,10 +111,10 @@ function BlogPost({ title, content, date, link }) {
                 {listItems}
               </ol>
             );
-          } else if (paragraph.startsWith('-')) {
-            const listItems = paragraph.split('\n').map((item, itemIndex) => (
+          } else if (lines[0].startsWith('- ')) {
+            const listItems = lines.map((item, itemIndex) => (
               <li key={`${index}-${itemIndex}`}>
-                <span className="bullet">•</span> {item.replace('-', '')}
+                <span className="bullet">•</span> {item.replace('- ', '')}
               </li>
             ));
             return (
@@ -122,7 +123,9 @@ function BlogPost({ title, content, date, link }) {
               </ul>
             );
           } else {
-            return <p key={index}>{paragraph}</p>;
+            return lines.map((line, lineIndex) => (
+              <p key={`${index}-${lineIndex}`}>{line}</p>
+            ));
           }
         })}
       </div>
