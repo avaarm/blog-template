@@ -54,6 +54,14 @@ Stay Updated: Keep your operating systems, apps, and security software up to dat
 Conclusion: The Magic of a Tidy Digital Life
 By taking the time to declutter and organize your digital space, you can reduce stress, increase productivity, and enjoy a more efficient digital experience. The magic of tidying up is not just about creating space, but also about creating a sense of order and calm in your digital life. Start small, be consistent, and enjoy the benefits of a well-organized digital world!
     `,
+    date: new Date('2023-08-26T10:00:00'),
+    link: '/post/1'
+  },
+  {
+    id: 1,
+    title: 'Why You Should Attend GHC',
+    content: `
+    `,
     date: new Date('2024-08-26T10:00:00'),
     link: '/post/1'
   }

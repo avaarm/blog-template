@@ -34,32 +34,38 @@ function BlogList() {
 }
 
 function BlogPost({ title, content, date, link }) {
+  // Updated renderContent function to handle newlines and paragraphs better
   const renderContent = () => {
     const paragraphs = content.split('\n\n');  // Split content by double newlines for paragraphs
 
     return paragraphs.map((paragraph, index) => {
-      const lines = paragraph.split('\n');  // Split each paragraph by newline
+      const lines = paragraph.split('\n');  // Split each paragraph by single newline
 
-      // Check if paragraph starts with a number or a bullet point
-      if (lines[0].match(/^\d+\./)) {
-        return (
-          <ol key={index}>
-            {lines.map((line, lineIndex) => (
-              <li key={lineIndex}>{line.replace(/^\d+\.\s/, '')}</li>
-            ))}
-          </ol>
-        );
-      } else if (lines[0].startsWith('- ')) {
-        return (
-          <ul key={index}>
-            {lines.map((line, lineIndex) => (
-              <li key={lineIndex}>{line.replace('- ', '')}</li>
-            ))}
-          </ul>
-        );
-      } else {
-        return lines.map((line, lineIndex) => <p key={lineIndex}>{line}</p>);
+      return lines.map((line, lineIndex) => {
+        if (line.startsWith('1.') || line.startsWith('2.') || line.startsWith('3.') || line.startsWith('4.')) {
+          return <ol key={lineIndex}><li>{line.replace(/^\d+\.\s/, '')}</li></ol>;
+        } else if (line.startsWith('- ')) {
+          return <ul key={lineIndex}><li>{line.replace('- ', '')}</li></ul>;
+        } else if (line.trim().length === 0) {
+          // Handles empty lines (acts like <br />)
+          return <br key={lineIndex} />;
+        } else {
+          return <p key={lineIndex}>{renderTextWithBold(line)}</p>;
+        }
+      });
+    });
+  };
+
+  // Function to render bold text by replacing **text** or __text__ with <strong>text</strong>
+  const renderTextWithBold = (text) => {
+    const boldRegex = /(\*\*(.*?)\*\*|__(.*?)__)/g;
+    const parts = text.split(boldRegex);
+
+    return parts.map((part, index) => {
+      if (part.startsWith('**') || part.startsWith('__')) {
+        return <strong key={index}>{part.replace(/\*\*|__/g, '')}</strong>;
       }
+      return part;
     });
   };
 
@@ -85,4 +91,6 @@ function formatDate(date) {
   });
 }
 
+// Exporting the App component, which should be the entry point of the application
 export default App;
+
