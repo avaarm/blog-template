@@ -1,14 +1,15 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 import './App.css';
 import Logo from './Logo';
-import blogPosts from './blogPosts';
+import blogPosts from './blogPosts'; // Importing from blogPosts.js or .json
 
 function App() {
   return (
     <div className="App">
       <header>
         <Logo />
-        <h1> </h1>
+        <h1>Your Blog</h1>
       </header>
       <main>
         <BlogList />
@@ -39,22 +40,9 @@ function BlogPost({ title, content, date, link }) {
       <h2><a href={link}>{title}</a></h2>
       <p className="post-date">{formatDate(date)}</p>
       <div className="post-content">
-        {content.split('\n\n').map((paragraph, index) => {
-          const lines = paragraph.split('\n').filter(line => line.trim() !== '');
-          if (lines.length > 1 && lines[0].trim().match(/^\d+\.\s/)) {
-            return (
-              <div key={index}>
-                {lines.map((line, lineIndex) => (
-                  line.trim().startsWith('- ') ? 
-                  <ul key={`${index}-${lineIndex}`}><li>{line.trim().replace('- ', '')}</li></ul> :
-                  <p key={`${index}-${lineIndex}`}>{line}</p>
-                ))}
-              </div>
-            );
-          } else {
-            return <p key={index}>{paragraph}</p>;
-          }
-        })}
+        <ReactMarkdown>
+          {content}  {/* ReactMarkdown will render markdown to HTML */}
+        </ReactMarkdown>
       </div>
       <a href={link} className="read-more">Read more</a>
     </article>
@@ -62,7 +50,7 @@ function BlogPost({ title, content, date, link }) {
 }
 
 function formatDate(date) {
-  return date.toLocaleString('en-US', {
+  return new Date(date).toLocaleString('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
