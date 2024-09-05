@@ -1,8 +1,8 @@
 import React from 'react';
-import ReactMarkdown from 'react-markdown';
 import './App.css';
 import Logo from './Logo';
-import blogPosts from './blogPosts'; // Importing from blogPosts.js or .json
+import ReactMarkdown from 'react-markdown';  // Ensure react-markdown is imported
+import blogPosts from './blogPosts';  // Adjust based on your file extension (.json or .js)
 
 function App() {
   return (
@@ -40,9 +40,7 @@ function BlogPost({ title, content, date, link }) {
       <h2><a href={link}>{title}</a></h2>
       <p className="post-date">{formatDate(date)}</p>
       <div className="post-content">
-        <ReactMarkdown>
-          {content}  {/* ReactMarkdown will render markdown to HTML */}
-        </ReactMarkdown>
+        <ReactMarkdown>{content}</ReactMarkdown>  {/* Rendering markdown content */}
       </div>
       <a href={link} className="read-more">Read more</a>
     </article>
