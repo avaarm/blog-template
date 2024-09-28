@@ -1,56 +1,88 @@
-.App {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-header {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.logo {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.logo img {
-  max-height: 400px;
-}
-
-.blog-post {
-  margin-bottom: 30px;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
+/* Styles for main headings (e.g., blog post titles) */
 .blog-post h2 {
+  font-size: 28px;
   margin-top: 0;
-}
-
-.blog-post h2 a {
   color: #333;
-  text-decoration: none;
 }
 
-.blog-post h2 a:hover {
-  text-decoration: underline;
+/* Styles for section headings within the post */
+.post-content h2 {
+  font-size: 24px;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  color: #444;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
 }
 
-.post-date {
-  color: #666;
-  font-style: italic;
+.post-content h3 {
+  font-size: 20px;
+  margin-top: 25px;
   margin-bottom: 10px;
+  color: #555;
 }
 
-.read-more {
-  display: inline-block;
-  margin-top: 10px;
-  color: #007bff;
-  text-decoration: none;
+.post-content strong {
+  font-weight: bold;
+  color: #000;
 }
 
-.read-more:hover {
-  text-decoration: underline;
+.post-content p {
+  line-height: 1.6;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.post-content ul,
+.post-content ol {
+  margin: 15px 0;
+  padding-left: 40px;
+}
+
+.post-content li {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+/* Style for ordered lists (numbered) */
+.post-content ol {
+  list-style-type: decimal;
+}
+
+/* Style for unordered lists (bullets) */
+.post-content ul {
+  list-style-type: disc;
+}
+
+.post-content hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 30px 0;
+}
+
+.post-content blockquote {
+  border-left: 4px solid #ddd;
+  padding-left: 15px;
+  color: #666;
+  margin: 20px 0;
+  font-style: italic;
+}
+
+
+@media (max-width: 600px) {
+  .App {
+    padding: 15px;
+  }
+
+  .blog-post {
+    padding: 15px;
+  }
+
+  .post-content h2 {
+    font-size: 22px;
+  }
+
+  .post-content h3 {
+    font-size: 18px;
+  }
 }
