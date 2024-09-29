@@ -19,7 +19,7 @@ function App() {
     <div className="App">
       <header>
         <Logo />
-        <h1>Your Blog</h1>
+        <h1> </h1>
       </header>
       <main>
         <BlogList />
