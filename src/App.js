@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import Logo from './Logo';
 import blogPosts from './blogPosts';
@@ -45,21 +45,38 @@ function BlogList() {
 }
 
 function BlogPost({ title, content, date, link }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  // Function to toggle expanded state
+  const toggleExpand = () => {
+    setIsExpanded(!isExpanded);
+  };
+
+  // Generate an excerpt (e.g., first 200 characters)
+  const excerpt = content.substring(0, 200) + '...';
+
   return (
     <article className="blog-post">
-      <h2>
-        <a href={link}>{title}</a>
+      <h2 onClick={toggleExpand} style={{ cursor: 'pointer' }}>
+        {title}
       </h2>
       <p className="post-date">{formatDate(date)}</p>
       <div className="post-content">
-        <ReactMarkdown>{content}</ReactMarkdown>
+        {isExpanded ? (
+          <ReactMarkdown>{content}</ReactMarkdown>
+        ) : (
+          <p>
+            {excerpt}
+            <span onClick={toggleExpand} className="read-more">
+              Read more
+            </span>
+          </p>
+        )}
       </div>
-      <a href={link} className="read-more">
-        Read more
-      </a>
     </article>
   );
 }
+
 
 // Export the App component
 export default App;
